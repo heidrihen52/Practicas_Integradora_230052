@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Mobile Platform Architecture",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "viewBox": [1320, 900]
+  },
+  "components": [
+    { "id": "mobile_app", "type": "frontend", "label": "Flutter Mobile App", "sublabel": "iOS / Android client", "pos": [70, 330], "size": [220, 104] },
+    { "id": "keycloak", "type": "security", "label": "Keycloak Authentication", "sublabel": "OIDC / OAuth 2.0", "pos": [390, 135], "size": [240, 104] },
+    { "id": "fastapi", "type": "backend", "label": "FastAPI REST API", "sublabel": "Application services", "brand": "FastAPI", "pos": [720, 330], "size": [230, 104] },
+    { "id": "postgres", "type": "database", "label": "PostgreSQL", "sublabel": "Relational data", "brand": "PostgreSQL", "pos": [1060, 230], "size": [220, 104] },
+    { "id": "mongodb", "type": "database", "label": "MongoDB", "sublabel": "Document data", "brand": "MongoDB", "pos": [1060, 470], "size": [220, 104] },
+    { "id": "maps", "type": "external", "label": "Leaflet / Maps Service", "sublabel": "Maps and geospatial tiles", "pos": [720, 650], "size": [230, 104] },
+    { "id": "docker", "type": "cloud", "label": "Docker", "sublabel": "Container runtime", "brand": "Docker", "pos": [270, 730], "size": [190, 92] },
+    { "id": "compose", "type": "cloud", "label": "Docker Compose", "sublabel": "Local service orchestration", "brand": "Docker", "pos": [500, 730], "size": [190, 92] },
+    { "id": "git", "type": "external", "label": "Git", "sublabel": "Source control", "pos": [70, 70], "size": [190, 92] },
+    { "id": "github", "type": "external", "label": "GitHub", "sublabel": "Remote repository", "brand": "GitHub", "pos": [70, 190], "size": [190, 92] }
+  ],
+  "boundaries": [
+    { "kind": "security-group", "label": "Mobile Device Trust Boundary", "wraps": ["mobile_app"], "pad": 34 },
+    { "kind": "security-group", "label": "Application Trust Boundary", "wraps": ["keycloak", "fastapi", "postgres", "mongodb"], "pad": 38 },
+    { "kind": "region", "label": "Development Infrastructure", "wraps": ["docker", "compose"], "pad": 30 },
+    { "kind": "security-group", "label": "External Service Boundary", "wraps": ["maps", "git", "github"], "pad": 30 }
+  ],
+  "connections": [
+    { "id": "auth", "from": "mobile_app", "to": "keycloak", "label": "OIDC sign-in / token refresh", "variant": "security" },
+    { "id": "api", "from": "mobile_app", "to": "fastapi", "label": "HTTPS REST requests with bearer token", "variant": "emphasis", "labelAt": [500, 475] },
+    { "id": "pg", "from": "fastapi", "to": "postgres", "label": "SQL read / write" },
+    { "id": "mongo", "from": "fastapi", "to": "mongodb", "label": "Document read / write" },
+    { "id": "map_client", "from": "mobile_app", "to": "maps", "label": "Map display and tiles", "variant": "dashed", "fromSide": "bottom", "toSide": "bottom", "via": [[180, 500], [230, 500], [230, 860], [835, 860]], "labelAt": [150, 580] },
+    { "id": "map_api", "from": "fastapi", "to": "maps", "label": "Geospatial service calls", "variant": "dashed", "labelAt": [850, 535] },
+    { "id": "compose_docker", "from": "compose", "to": "docker", "label": "Defines local containers", "labelAt": [480, 850] },
+    { "id": "compose_services", "from": "compose", "to": "fastapi", "label": "Runs local stack", "variant": "dashed" },
+    { "id": "git_github", "from": "git", "to": "github", "label": "Push / pull source changes", "labelAt": [285, 176] }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Primary request flow", "items": ["Flutter app authenticates with Keycloak.", "The app calls FastAPI over HTTPS with an access token.", "FastAPI reads and writes PostgreSQL and MongoDB."] },
+    { "dot": "amber", "title": "Boundary notes", "items": ["Mobile, application, external-service, and local-development zones are separated.", "Token validation protects API access across the mobile-to-application boundary."] }
+  ]
+}
