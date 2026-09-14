@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación - Práctica 02 | Integradora</title>
+    <style>
+        /* Estilos generales y reinicio básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Contenedor principal */
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Encabezados */
+        .badge {
+            background-color: #e0eafc;
+            color: #2a5298;
+            font-weight: bold;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1e3c72;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #666;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        /* Sección de datos */
+        .info-container {
+            text-align: left;
+            background-color: #f8f9fa;
+            border-left: 4px solid #2a5298;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .info-container p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .info-container strong {
+            color: #1e3c72;
+        }
+
+        /* Sección de botones/anclas */
+        .nav-title {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Estilo de los enlaces (Anclas) */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .btn-primary {
+            background-color: #2a5298;
+            color: #ffffff;
+            border: 2px solid #2a5298;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e3c72;
+            border-color: #1e3c72;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #2a5298;
+            border: 2px solid #2a5298;
+        }
+
+        .btn-secondary:hover {
+            background-color: #2a5298;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Pie de página */
+        footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="card">
+        <span class="badge">Materia: Integradora</span>
+        <h1>Práctica 02</h1>
+        <h2>Presentación del Proyecto</h2>
+
+        <!-- Información general -->
+        <section class="info-container">
+            <p><strong>Alumno:</strong> [Tu Nombre Completo]</p>
+            <p><strong>Profesor:</strong> [Nombre del Docente]</p>
+            <p><strong>Carrera / Grupo:</strong> [Ej. Ing. en Desarrollo de Software - 5° B]</p>
+            <p><strong>Fecha:</strong> [Fecha de Entrega]</p>
+        </section>
+
+        <!-- Navegación con Anclas -->
+        <p class="nav-title">Accede a las partes del proyecto:</p>
+        <div class="buttons-container">
+            <!-- ANCLA 1 -->
+            <a href="archivo1.html" class="btn btn-primary">Ir a Archivo 1</a>
+            
+            <!-- ANCLA 2 -->
+            <a href="archivo2.html" class="btn btn-secondary">Ir a Archivo 2</a>
+        </div>
+
+        <footer>
+            &copy; 2026 - Universidad / Institución Educativa
+        </footer>
+    </main>
+
+</body>
+</html>
