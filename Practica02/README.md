@@ -43,6 +43,6 @@ Explora la arquitectura generada y la documentación del proyecto a través de l
 
 ### Enlaces del Proyecto
 
-* [Ver Diagrama Interactivo de Arquitectura en GitHub Pages](https://heidrihen52.github.io/Practicas_Integradora_230052/)
-* [Descargar PDF desde GitHub Pages](https://heidrihen52.github.io/Practicas_Integradora_230052/Docs/Practica02.pdf)
+* [Ver Diagrama Interactivo de Arquitectura en GitHub Pages](https://heidrihen52.github.io/Practicas_Integradora_230052/Practica02/)
+* [Descargar PDF desde GitHub Pages](https://heidrihen52.github.io/Practicas_Integradora_230052/Practica02/Docs/Practica02.pdf)
 
